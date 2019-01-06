@@ -1,0 +1,42 @@
+import java.time.LocalDate
+import org.apache.spark.sql.SparkSession
+
+import org.apache.zookeeper.server.SessionTracker.Session
+
+val currentDate = LocalDate.now()
+val daily = List.tabulate(7)(n => currentDate.minusDays(n)).toString()
+/*val dailyWeek = List.tabulate(28)(n => currentDate.minusDays(n))*/
+/*val daily = List.tabulate(181)(n => currentDate.minusDays(n))*/
+
+def catg(dy: String): String = {
+  if (daily.contains(dy)) {
+      val index = daily.indexOf(dy)
+      s"d${index + 1}"
+    }
+  else "Out of range"
+
+/*
+def call(dy: String, n: String)= {
+  val result = n match {
+    case "d" => catg(dy, "d")
+    case "wk" => catg(dy, "wk")
+    case "month" => catg(dy, "month")
+  }
+*/
+
+ /* println(result)*/
+}
+
+catg("2019-01-06")
+
+
+object ficloud32 {
+  def main (args: Array[String]) : Unit = {
+
+    val spark = SparkSession.builder().getOrCreate()
+
+
+    val fiDF = spark.read.csv("")
+
+  }
+}
