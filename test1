@@ -30,7 +30,7 @@ def call(dy: String, n: String)= {
 catg("2019-01-06")
 
 
-object ficloud32 {
+object test1 {
   def main (args: Array[String]) : Unit = {
 
     val spark = SparkSession.builder().getOrCreate()
